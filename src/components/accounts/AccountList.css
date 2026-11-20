@@ -1,0 +1,87 @@
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.account-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.account-list-item:last-child {
+  border-bottom: 0;
+}
+
+.account-list-main h3 {
+  margin-bottom: 5px;
+}
+
+.account-list-main p {
+  margin: 3px 0 0;
+  color: var(--color-muted);
+  font-size: 12px;
+}
+
+.account-list-details {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+}
+
+.account-list-details strong {
+  font-size: 14px;
+}
+
+.status-badge {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #59635d;
+  background: #eef1ef;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.status-overdue {
+  color: #9f251d;
+  background: #fce9e7;
+}
+
+.status-due-today {
+  color: #8a5200;
+  background: #fff3d6;
+}
+
+.status-paid {
+  color: #176b4d;
+  background: var(--color-green-soft);
+}
+
+.account-list-empty {
+  min-height: 150px;
+}
+
+.account-list-empty p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 500px) {
+  .account-list-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .account-list-details {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
