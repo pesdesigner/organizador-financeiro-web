@@ -6,13 +6,14 @@ Aplicação web pessoal para acompanhar contas, vencimentos e pagamentos. O obje
 
 ## Funcionalidades atuais
 
-- Painel inicial com estados vazios para contas e vencimentos.
-- Navegação entre a visão geral e a página de contas.
-- Rota de página não encontrada.
-- Regra isolada para classificar contas por data e status de pagamento.
-- Testes automatizados para essa regra.
+- Painel com totais de contas pendentes, pagas e atrasadas.
+- Cadastro de contas com nome obrigatório e empresa, valor, vencimento e observações opcionais.
+- Classificação do vencimento considerando o fuso de Brasília.
+- Alternância entre tema claro e tema escuro, com preferência guardada no navegador.
+- Navegação entre a visão geral, contas e página 404.
+- Testes automatizados para validação de dados, status por vencimento e alternância de tema.
 
-O projeto ainda não salva contas e não se conecta a uma API ou banco de dados. Nenhum dado financeiro real vem preenchido.
+As contas cadastradas existem apenas na memória da aplicação e são perdidas ao recarregar a página. Ainda não há integração com API ou banco de dados.
 
 ## Tecnologias
 

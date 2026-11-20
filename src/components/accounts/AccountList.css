@@ -45,24 +45,24 @@
 .status-badge {
   padding: 5px 9px;
   border-radius: 999px;
-  color: #59635d;
-  background: #eef1ef;
+  color: var(--color-neutral-text);
+  background: var(--color-neutral-surface);
   font-size: 11px;
   white-space: nowrap;
 }
 
 .status-overdue {
-  color: #9f251d;
-  background: #fce9e7;
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
 }
 
 .status-due-today {
-  color: #8a5200;
-  background: #fff3d6;
+  color: var(--color-warning);
+  background: var(--color-warning-soft);
 }
 
 .status-paid {
-  color: #176b4d;
+  color: var(--color-green-dark);
   background: var(--color-green-soft);
 }
 
