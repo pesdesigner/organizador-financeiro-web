@@ -1,0 +1,6 @@
+.not-found {
+  display: grid;
+  min-height: 55vh;
+  align-content: center;
+  justify-items: start;
+}

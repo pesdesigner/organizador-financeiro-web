@@ -1,75 +1,56 @@
-# React + TypeScript + Vite
+# Organizador Financeiro Pessoal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web pessoal para acompanhar contas, vencimentos e pagamentos. O objetivo é ajudar a identificar o que precisa ser pago, o que está próximo do vencimento e o que já foi resolvido.
 
-Currently, two official plugins are available:
+> Projeto em desenvolvimento. O frontend inicial está sendo construído; cadastro de dados, autenticação e integração com API ainda serão implementados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades atuais
 
-## React Compiler
+- Painel inicial com estados vazios para contas e vencimentos.
+- Navegação entre a visão geral e a página de contas.
+- Rota de página não encontrada.
+- Regra isolada para classificar contas por data e status de pagamento.
+- Testes automatizados para essa regra.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+O projeto ainda não salva contas e não se conecta a uma API ou banco de dados. Nenhum dado financeiro real vem preenchido.
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- TypeScript
+- Vite
+- React Router
+- ESLint
+- Vitest e Testing Library
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Executar localmente
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Requer Node.js e npm instalados.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Comandos disponíveis
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev       # inicia o servidor de desenvolvimento
+npm run test      # inicia os testes em modo contínuo
+npm run test:run  # executa os testes uma vez
+npm run lint      # verifica o código com ESLint
+npm run build     # verifica os tipos e gera o build de produção
+npm run preview   # serve localmente o build de produção
 ```
+
+## Estrutura do frontend
+
+```bash
+src/
+  components/
+    layout/       # estrutura comum: cabeçalho, navegação e rodapé
+    ui/           # componentes reutilizáveis de interface
+  domain/         # tipos e regras de negócio
+  pages/          # páginas acessadas pelas rotas
+  styles/         # estilos compartilhados
+  test/           # configuração dos testes
