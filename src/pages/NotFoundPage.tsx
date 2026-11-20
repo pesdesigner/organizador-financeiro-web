@@ -3,15 +3,18 @@ import './NotFoundPage.css'
 
 export function NotFoundPage() {
   return (
-    <main className="not-found">
-      <p className="eyebrow">ERRO 404</p>
-      <h1>Página não encontrada</h1>
-      <p className="page-description">
-        O endereço pode estar incorreto ou a página não existe.
-      </p>
-      <Link className="button button-primary" to="/">
-        Voltar ao início
-      </Link>
-    </main>
+    <section className="not-found" aria-labelledby="not-found-title">
+      <div className="not-found-card">
+        <span className="not-found-code">404</span>
+        <p className="eyebrow">PÁGINA NÃO ENCONTRADA</p>
+        <h1 id="not-found-title">Não encontramos esse endereço</h1>
+        <p className="page-description">
+          Confira o endereço ou volte para a visão geral.
+        </p>
+        <Link className="button button-primary" to="/">
+          Voltar ao início
+        </Link>
+      </div>
+    </section>
   )
 }
