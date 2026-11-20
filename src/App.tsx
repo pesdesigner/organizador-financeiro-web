@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { AppLayout } from './components/layout/AppLayout'
 import { AccountsPage } from './pages/AccountsPage'
 import { DashboardPage } from './pages/DashboardPage'
@@ -10,10 +10,8 @@ function App() {
       <Route element={<AppLayout />}>
         <Route index element={<DashboardPage />} />
         <Route path="contas" element={<AccountsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
-
-      <Route path="/inicio" element={<Navigate to="/" replace />} />
-      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }

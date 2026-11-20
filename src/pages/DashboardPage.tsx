@@ -1,8 +1,34 @@
 import { Link } from 'react-router-dom'
+import { AccountList } from '../components/accounts/AccountList'
 import { MetricCard } from '../components/ui/MetricCard'
+import { useAccounts } from '../context/useAccounts'
+import { getDueState, getTodayInBrasilia } from '../domain/account'
 import './DashboardPage.css'
 
 export function DashboardPage() {
+  const { accounts } = useAccounts()
+  const today = getTodayInBrasilia()
+
+  const pendingAccounts = accounts.filter(
+    (account) => account.paymentStatus === 'pending',
+  )
+  const paidCount = accounts.filter(
+    (account) => account.paymentStatus === 'paid',
+  ).length
+  const overdueCount = pendingAccounts.filter(
+    (account) => getDueState(account, today) === 'overdue',
+  ).length
+
+  const upcomingAccounts = accounts
+    .filter((account) => {
+      const state = getDueState(account, today)
+      return state === 'upcoming' || state === 'due-today'
+    })
+    .sort((first, second) =>
+      (first.dueDate ?? '').localeCompare(second.dueDate ?? ''),
+    )
+    .slice(0, 5)
+
   return (
     <section aria-labelledby="dashboard-title">
       <div className="page-heading">
@@ -22,18 +48,18 @@ export function DashboardPage() {
       <div className="metrics-grid">
         <MetricCard
           label="Pendentes"
-          value="—"
-          description="Contas aguardando cadastro"
+          value={String(pendingAccounts.length)}
+          description="Aguardando pagamento"
         />
         <MetricCard
           label="Pagas"
-          value="—"
+          value={String(paidCount)}
           description="Pagamentos confirmados"
         />
         <MetricCard
           label="Atrasadas"
-          value="—"
-          description="Contas vencidas e não pagas"
+          value={String(overdueCount)}
+          description="Vencidas e não pagas"
         />
       </div>
 
@@ -45,19 +71,23 @@ export function DashboardPage() {
           </div>
         </div>
 
-        <div className="empty-state">
-          <span className="empty-state-icon" aria-hidden="true">
-            ◷
-          </span>
-          <h3>Nenhuma conta cadastrada</h3>
-          <p>
-            Quando você cadastrar contas, os próximos vencimentos aparecerão
-            aqui.
-          </p>
-          <Link className="button button-secondary" to="/contas">
-            Acessar contas
-          </Link>
-        </div>
+        {upcomingAccounts.length > 0 ? (
+          <AccountList accounts={upcomingAccounts} />
+        ) : (
+          <div className="empty-state">
+            <span className="empty-state-icon" aria-hidden="true">
+              ◷
+            </span>
+            <h3>Nenhum próximo vencimento</h3>
+            <p>
+              Cadastre uma conta com vencimento para acompanhar os próximos
+              prazos.
+            </p>
+            <Link className="button button-secondary" to="/contas">
+              Acessar contas
+            </Link>
+          </div>
+        )}
       </section>
     </section>
   )
