@@ -1,4 +1,5 @@
 import { ThemeToggle } from '../ui/ThemeToggle'
+import { UserProfile } from '../auth/UserProfile'
 
 export function Header() {
   return (
@@ -12,6 +13,7 @@ export function Header() {
 
       <div className="header-actions">
         <span className="header-caption">Seu espaço financeiro pessoal</span>
+        <UserProfile />
         <ThemeToggle />
       </div>
     </header>
