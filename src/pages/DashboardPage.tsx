@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { AccountList } from '../components/accounts/AccountList'
 import { MetricCard } from '../components/ui/MetricCard'
-import { useAccounts } from '../context/useAccounts'
+import { useAccounts } from '../contexts/useAccounts'
 import { getDueState, getTodayInBrasilia } from '../domain/account'
 import './DashboardPage.css'
 

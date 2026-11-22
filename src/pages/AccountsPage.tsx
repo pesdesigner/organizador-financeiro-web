@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AccountForm } from '../components/accounts/AccountForm'
 import { AccountList } from '../components/accounts/AccountList'
-import { useAccounts } from '../context/useAccounts'
+import { useAccounts } from '../contexts/useAccounts'
 import type { Account } from '../domain/account'
 import './AccountsPage.css'
 
